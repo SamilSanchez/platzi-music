@@ -1,0 +1,15 @@
+<ion-content>
+
+  <figure class="ion-text-center" class="ion-padding">
+    <img src="assets/img/logo.png" alt="" srcset="">
+  </figure>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <ion-item color="primary">
+      <ion-label> Email </ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+  </form>
+
+
+</ion-content>
