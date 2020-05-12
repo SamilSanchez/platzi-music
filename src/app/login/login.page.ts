@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { AuthenticateService } from '../services/authenticate.service';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private authService:AuthenticateService,
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl("", Validators.compose([
@@ -56,6 +58,10 @@ export class LoginPage implements OnInit {
     }).catch(err=> {
       this.errorMessage = err
     });
+  }
+
+  goToRegister(){
+    this.navCtrl.navigateForward("register");
   }
 
 }
