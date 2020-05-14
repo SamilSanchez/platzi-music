@@ -1,0 +1,25 @@
+<ion-menu side="end" type="push" contentId="content">
+  <ion-header>
+    <ion-toolbar color="white">
+      <ion-title>Menu</ion-title>
+      <ion-buttons slot="start">
+        <ion-button class="ion-icon-only" (click)="closeMenu()">
+          <ion-icon name="arrow-forward" size=large></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>Home</ion-item>
+      <ion-item>Sports</ion-item>
+      <ion-item>Settings</ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out" color="primary" slot="start"></ion-icon>
+        Salir
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="content"></ion-router-outlet>
