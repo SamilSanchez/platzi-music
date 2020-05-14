@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PlatziMusicService } from '../services/platzi-music.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  artists = [{}, {}, {}, {}, {}, {}, {}, {}]
+  songs: any[] = []
+  albums: any[] = []
   slideOps = {
     inititalSlide: 2,
     slidesPerView: 4,
@@ -14,8 +18,13 @@ export class HomePage {
     speed: 400
   }
 
-  constructor() {}
+  constructor(private musicSservice: PlatziMusicService) {}
 
-  artists = [{}, {}, {}, {}, {}, {}, {}, {}]
-
+  ionViewDidEnter(){
+    this.musicSservice.getMusicRelease().then(newReleases => {
+      const new_releases =  newReleases.albums.items
+      this.songs = new_releases.filter(e=>e.album_type=='single')
+      this.albums = new_releases.filter(e=>e.album_type=='album')
+    });
+  }
 }
